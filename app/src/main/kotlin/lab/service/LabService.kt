@@ -12,7 +12,7 @@ class LabService {
     private val runManager = RunManager(experimentManager)
     private val runResultManager = RunResultManager(runManager)
 
-    // Experiment commands
+
     fun expCreate(name: String, description: String?, ownerUsername: String = "SYSTEM"): Experiment =
         experimentManager.add(name, description, ownerUsername)
 
@@ -28,7 +28,7 @@ class LabService {
     fun expUpdate(id: Long, name: String? = null, description: String? = null, ownerUsername: String? = null): Experiment =
         experimentManager.update(id, name, description, ownerUsername)
 
-    // Run commands
+
     fun runAdd(experimentId: Long, name: String, operatorName: String): Run =
         runManager.add(experimentId, name, operatorName)
 
@@ -42,7 +42,6 @@ class LabService {
         return run to resultsCount
     }
 
-    // Result commands
     fun resAdd(runId: Long, param: String, value: Double, unit: String, comment: String?): RunResult =
         runResultManager.add(runId, param, value, unit, comment)
 
@@ -50,7 +49,6 @@ class LabService {
         if (param != null) runResultManager.listByRunAndParam(runId, param)
         else runResultManager.listByRun(runId)
 
-    // Summary command
     data class ParamStats(val min: Double, val max: Double, val avg: Double, val count: Int)
 
     fun expSummary(experimentId: Long): Map<String, ParamStats> {

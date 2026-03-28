@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.22"   // явная версия Kotlin
+    kotlin("jvm") version "1.9.22"
     application
 }
 
@@ -15,13 +15,20 @@ dependencies {
 }
 
 java {
+    tasks.named<JavaExec>("run") {
+        systemProperty("file.encoding", "UTF-8")
+    }
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions.jvmTarget = "21"
+        kotlinOptions.freeCompilerArgs += listOf("-Xutf8")
+    }
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
 application {
-    mainClass.set("lab.MainKt")   // ваш главный класс
+    mainClass.set("lab.MainKt")
 }
 
 tasks.named<Test>("test") {
@@ -29,5 +36,5 @@ tasks.named<Test>("test") {
 }
 
 tasks.named<JavaExec>("run") {
-    standardInput = System.`in`   // чтобы можно было вводить команды
+    standardInput = System.`in`
 }
