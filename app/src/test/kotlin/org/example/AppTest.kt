@@ -3,12 +3,34 @@
  */
 package org.example
 
+import lab.domain.Experiment
 import kotlin.test.Test
 import kotlin.test.assertNotNull
+import kotlin.test.assertEquals
+import java.time.Instant
 
 class AppTest {
-    @Test fun appHasAGreeting() {
-        val classUnderTest = App()
-        assertNotNull(classUnderTest.greeting, "app should have a greeting")
+    @Test
+    fun shouldCreateExperimentSuccessfully() {
+        val experiment = Experiment(
+            id = 1,
+            name = "Test",
+            description = "Описание",
+            ownerUsername = "PlaidMallard",
+                createdAt = Instant.now()
+            //Instant.now()
+        )
+
+//        val experiment = manager.add(
+//            name = "Test Experiment",
+//            description = "Описание",
+//            ownerUsername = "user1"
+//        )
+
+        assertNotNull(experiment)
+        assertEquals("Test", experiment.name)
+        assertEquals("Описание", experiment.description)
+        assertEquals("PlaidMallard", experiment.ownerUsername)
     }
+
 }

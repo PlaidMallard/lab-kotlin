@@ -16,8 +16,7 @@ class Experiment(
     name: String,
     description: String?,
     ownerUsername: String,
-    createdAt: Instant,
-    updatedAt: Instant
+    createdAt: Instant
 ) {
     var name: String = name
         set(value) {
@@ -41,14 +40,14 @@ class Experiment(
         }
 
 
-    var updatedAt: Instant = updatedAt
+    var updatedAt: Instant
         private set
 
     init {
         validateName(name)
         validateDescription(description)
         validateOwnerUsername(ownerUsername)
-        require(createdAt <= updatedAt) { "createdAt не может быть позже updatedAt" }
+        updatedAt = createdAt
     }
 
     private fun updateTimestamp() {

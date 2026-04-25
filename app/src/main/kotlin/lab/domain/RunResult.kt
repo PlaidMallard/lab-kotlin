@@ -13,23 +13,21 @@ class RunResult(
     val id: Long,
     val runId: Long,
     param: String,
-    value: Double,
+    var value: Double,
     unit: String,
-    comment: String?
+    var comment: String?
 ) {
     var param: String = param
         set(value) {
             validateParam(value)
             field = value
         }
-    var value: Double = value
 
     var unit: String = unit
         set(value) {
             validateUnit(value)
             field = value
         }
-    var comment: String? = comment
 
 
     init {
