@@ -37,11 +37,11 @@ class RunResult(
 
     companion object {
         fun validateParam(param: String) {
-            require(param.isNotBlank()) { "param не может быть пустым" }
+            require(param.isNotBlank()) { "param cant be empty" }
         }
 
         fun validateUnit(unit: String) {
-            require(unit.isNotBlank()) { "unit не может быть пустым" }
+            require(unit.isNotBlank()) { "unit cant be empty" }
         }
     }
 

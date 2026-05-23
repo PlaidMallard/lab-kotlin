@@ -9,14 +9,13 @@ import java.time.Instant
  * @property description описание (может быть пустым, до 512 символов)
  * @property ownerUsername логин создателя (не пустое)
  * @property createdAt время создания (устанавливается автоматически, неизменяемо)
- * @property updatedAt время последнего изменения (обновляется автоматически)
  */
 class Experiment(
     val id: Long,
     name: String,
     description: String?,
     ownerUsername: String,
-    createdAt: Instant
+    val createdAt: Instant
 ) {
     var name: String = name
         set(value) {
@@ -59,18 +58,18 @@ class Experiment(
         private const val MAX_DESC_LENGTH = 512
 
         fun validateName(name: String) {
-            require(name.isNotBlank()) { "name не может быть пустым" }
-            require(name.length <= MAX_NAME_LENGTH) { "name не может быть длиннее $MAX_NAME_LENGTH символов" }
+            require(name.isNotBlank()) { "name cant be empty" }
+            require(name.length <= MAX_NAME_LENGTH) { "name cant be more than $MAX_NAME_LENGTH symbols" }
         }
 
         fun validateDescription(description: String?) {
             if (description != null && description.length > MAX_DESC_LENGTH) {
-                throw IllegalArgumentException("description не может быть длиннее $MAX_DESC_LENGTH символов")
+                throw IllegalArgumentException("description cant be more than $MAX_DESC_LENGTH символов")
             }
         }
 
         fun validateOwnerUsername(ownerUsername: String) {
-            require(ownerUsername.isNotBlank()) { "ownerUsername не может быть пустым" }
+            require(ownerUsername.isNotBlank()) { "ownerUsername cant be empty" }
         }
     }
 

@@ -23,6 +23,9 @@ class HelpCommand : CliCommand {
               res_add <run_id>                 - add result (interactive)
               res_list <run_id> [--param PARAM] - list run results
               exp_summary <experiment_id>      - summary statistics by experiment params
+              save_command
+              load_command
+              
             """.trimIndent(),
         )
         return true
