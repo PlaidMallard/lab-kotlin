@@ -20,7 +20,7 @@ class LabService {
         if (mine) experimentManager.listByOwner(currentUser) else experimentManager.list()
 
     fun expShow(id: Long): Pair<Experiment, Int> {
-        val exp = experimentManager.getById(id) ?: throw IllegalArgumentException("Experiment не найден")
+        val exp = experimentManager.getById(id) ?: throw IllegalArgumentException("Experiment not found")
         val runsCount = runManager.countByExperiment(id)
         return exp to runsCount
     }
@@ -37,7 +37,7 @@ class LabService {
         else runManager.listByExperiment(experimentId)
 
     fun runShow(id: Long): Pair<Run, Int> {
-        val run = runManager.getById(id) ?: throw IllegalArgumentException("Run не найден")
+        val run = runManager.getById(id) ?: throw IllegalArgumentException("Run not found")
         val resultsCount = runResultManager.listByRun(id).size
         return run to resultsCount
     }
@@ -65,10 +65,4 @@ class LabService {
             }
     }
 
-    fun expDeleteCascade(id: Long): Boolean {
-        if (!experimentManager.contains(id)) return false
-        runResultManager.removeByExperiment(id)
-        runManager.removeByExperiment(id)
-        return experimentManager.remove(id)
-    }
 }

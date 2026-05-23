@@ -9,7 +9,7 @@ class RunManager(private val experimentManager: ExperimentManager) {
     private val idGenerator = AtomicLong(0)
 
     fun add(experimentId: Long, name: String, operatorName: String): Run {
-        require(experimentManager.contains(experimentId)) { "Experiment с id=$experimentId не найден" }
+        require(experimentManager.contains(experimentId)) { "Experiment with id=$experimentId not foun" }
         val id = idGenerator.incrementAndGet()
         val run = Run(
             id = id,
@@ -31,10 +31,6 @@ class RunManager(private val experimentManager: ExperimentManager) {
         runs.filter { it.experimentId == experimentId }
             .sortedByDescending { it.createdAt }
             .take(lastN)
-
-    fun removeByExperiment(experimentId: Long) {
-        runs.removeAll { it.experimentId == experimentId }
-    }
 
     fun countByExperiment(experimentId: Long): Int = runs.count { it.experimentId == experimentId }
 }

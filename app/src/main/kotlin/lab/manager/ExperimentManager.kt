@@ -17,7 +17,6 @@ class ExperimentManager {
             description = description,
             ownerUsername = ownerUsername,
             createdAt = now,
-            updatedAt = now
         )
         experiments.add(experiment)
         return experiment
@@ -31,17 +30,16 @@ class ExperimentManager {
         experiments.filter { it.ownerUsername == ownerUsername }.sortedBy { it.id }
 
     fun update(id: Long, name: String? = null, description: String? = null, ownerUsername: String? = null): Experiment {
-        val existing = getById(id) ?: throw IllegalArgumentException("Experiment с id=$id не найден")
-        name?.let { existing.name = it }
+        val existing = getById(id) ?: throw IllegalArgumentException("Experiment with id=$id not found")
+        name?.let(fun(it: String) {
+            existing.name = it
+        })
         description?.let { existing.description = it }
         ownerUsername?.let { existing.ownerUsername = it }
         return existing
     }
 
-    fun remove(id: Long): Boolean {
-        val experiment = getById(id) ?: return false
-        return experiments.remove(experiment)
-    }
+
 
     fun contains(id: Long): Boolean = getById(id) != null
 }
