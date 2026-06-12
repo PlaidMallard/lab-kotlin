@@ -15,6 +15,8 @@ import lab.command.RunListCommand
 import lab.command.RunShowCommand
 import lab.service.LabService
 import java.util.Scanner
+import lab.command.SaveCommand
+import lab.command.LoadCommand
 
 class Cli(private val service: LabService) {
     private val scanner = Scanner(System.`in`)
@@ -33,6 +35,8 @@ class Cli(private val service: LabService) {
         RunShowCommand(),
         ResListCommand(),
         ExpSummaryCommand(),
+        SaveCommand(),
+        LoadCommand(),
     )
 
     fun start() {
@@ -62,7 +66,7 @@ class Cli(private val service: LabService) {
 
         val command = findCommand(commandName)
         if (command == null) {
-            println("Неизвестная команда. Введите help для списка.")
+            println("Unknown command. Write help")
             return
         }
 

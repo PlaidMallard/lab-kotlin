@@ -8,6 +8,7 @@ repositories {
 }
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.11.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
@@ -15,15 +16,8 @@ dependencies {
 }
 
 java {
-    tasks.named<JavaExec>("run") {
-        systemProperty("file.encoding", "UTF-8")
-    }
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "21"
-        kotlinOptions.freeCompilerArgs += listOf("-Xutf8")
-    }
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -36,5 +30,7 @@ tasks.named<Test>("test") {
 }
 
 tasks.named<JavaExec>("run") {
+    systemProperty("file.encoding", "UTF-8")
     standardInput = System.`in`
 }
+

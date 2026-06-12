@@ -22,6 +22,7 @@ class ExpShowCommand : CliCommand {
             println("name: ${exp.name}")
             println("description: ${exp.description ?: "(empty)"}")
             println("runs: $runsCount")
+            println("updatedAt: ${exp.updatedAt}")
         } catch (e: IllegalArgumentException) {
             println("Ошибка: ${e.message}")
         }

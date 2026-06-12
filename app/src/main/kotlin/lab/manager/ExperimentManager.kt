@@ -2,14 +2,14 @@ package lab.manager
 
 import lab.domain.Experiment
 import java.time.Instant
-import java.util.concurrent.atomic.AtomicLong
 
 class ExperimentManager {
     private val experiments = mutableSetOf<Experiment>()
-    private val idGenerator = AtomicLong(0)
+    private var idGenerator = 0L
 
     fun add(name: String, description: String?, ownerUsername: String): Experiment {
-        val id = idGenerator.incrementAndGet()
+        idGenerator += 1
+        val id = idGenerator
         val now = Instant.now()
         val experiment = Experiment(
             id = id,
@@ -22,7 +22,9 @@ class ExperimentManager {
         return experiment
     }
 
-    fun getById(id: Long): Experiment? = experiments.find { it.id == id }
+    fun getById(id: Long): Experiment? {
+        return experiments.find { it.id == id }
+    }
 
     fun list(): List<Experiment> = experiments.sortedBy { it.id }
 
@@ -30,7 +32,11 @@ class ExperimentManager {
         experiments.filter { it.ownerUsername == ownerUsername }.sortedBy { it.id }
 
     fun update(id: Long, name: String? = null, description: String? = null, ownerUsername: String? = null): Experiment {
-        val existing = getById(id) ?: throw IllegalArgumentException("Experiment with id=$id not found")
+        val existing = getById(id) ?: throw IllegalArgumentException("Experiment with id=$id not found") /*
+        val existing = getById(id)
+if (existing == null) {
+    throw IllegalArgumentException("Experiment with id=$id not found")
+} */
         name?.let(fun(it: String) {
             existing.name = it
         })
@@ -42,4 +48,15 @@ class ExperimentManager {
 
 
     fun contains(id: Long): Boolean = getById(id) != null
+    fun restore(experiment: Experiment) {
+        experiments.add(experiment)
+        if (experiment.id > idGenerator) idGenerator = experiment.id
+    }
+
+    fun listAll(): List<Experiment> = experiments.sortedBy { it.id }
+
+    fun remove(id: Long): Boolean {
+        val exp = getById(id) ?: return false
+        return experiments.remove(exp)
+    }
 }

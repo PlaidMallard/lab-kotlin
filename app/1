@@ -1,0 +1,22 @@
+{
+  "experiments": [
+    {
+      "id": 1,
+      "name": "Test",
+      "description": null,
+      "ownerUsername": "SYSTEM",
+      "createdAt": "2026-05-23T09:07:32.361949300Z",
+      "updatedAt": "2026-05-23T09:07:32.361949300Z"
+    }
+  ],
+  "runs": [
+    {
+      "id": 1,
+      "experimentId": 1,
+      "name": "solidify",
+      "operatorName": "good",
+      "createdAt": "2026-05-23T09:09:08.057255Z"
+    }
+  ],
+  "results": []
+}

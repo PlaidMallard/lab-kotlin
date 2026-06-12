@@ -39,13 +39,13 @@ class Run(
         private const val MAX_OPERATOR_LENGTH = 64
 
         fun validateName(name: String) {
-            require(name.isNotBlank()) { "name не может быть пустым" }
-            require(name.length <= MAX_NAME_LENGTH) { "name не может быть длиннее $MAX_NAME_LENGTH символов" }
+            require(name.isNotBlank()) { "name can not be emrty" }
+            require(name.length <= MAX_NAME_LENGTH) { "name cant be more than $MAX_NAME_LENGTH символов" }
         }
 
         fun validateOperatorName(operatorName: String) {
-            require(operatorName.isNotBlank()) { "operatorName не может быть пустым" }
-            require(operatorName.length <= MAX_OPERATOR_LENGTH) { "operatorName не может быть длиннее $MAX_OPERATOR_LENGTH символов" }
+            require(operatorName.isNotBlank()) { "operatorName can not be empty" }
+            require(operatorName.length <= MAX_OPERATOR_LENGTH) { "operatorName cant be more than $MAX_OPERATOR_LENGTH символов" }
         }
     }
 

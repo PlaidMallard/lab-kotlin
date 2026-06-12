@@ -2,15 +2,15 @@ package lab.manager
 
 import lab.domain.Run
 import java.time.Instant
-import java.util.concurrent.atomic.AtomicLong
 
 class RunManager(private val experimentManager: ExperimentManager) {
     private val runs = mutableSetOf<Run>()
-    private val idGenerator = AtomicLong(0)
+    private var idGenerator = 0L
 
     fun add(experimentId: Long, name: String, operatorName: String): Run {
         require(experimentManager.contains(experimentId)) { "Experiment with id=$experimentId not foun" }
-        val id = idGenerator.incrementAndGet()
+        idGenerator += 1
+        val id = idGenerator
         val run = Run(
             id = id,
             experimentId = experimentId,
@@ -33,4 +33,14 @@ class RunManager(private val experimentManager: ExperimentManager) {
             .take(lastN)
 
     fun countByExperiment(experimentId: Long): Int = runs.count { it.experimentId == experimentId }
+    fun restore(run: Run) {
+        runs.add(run)
+        if (run.id > idGenerator) idGenerator = run.id
+    }
+
+    fun listAll(): List<Run> = runs.sortedBy { it.id }
+
+    fun removeByExperiment(experimentId: Long) {
+        runs.removeAll { it.experimentId == experimentId }
+    }
 }
