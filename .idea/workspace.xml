@@ -5,28 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="062ecd9c-d2e8-4aae-9134-e4fc2d33c906" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/LoadCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/SaveCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/storage/FileStorage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/storage/FileValidator.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/storage/StorageDto.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/ui/LabApp.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/1" beforeDir="false" afterPath="$PROJECT_DIR$/app/1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/cli/CLI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/cli/CLI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/ExpShowCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/ExpShowCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/HelpCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/HelpCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/domain/Experiment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/domain/Experiment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/domain/Run.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/domain/Run.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/domain/RunResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/domain/RunResult.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/manager/ExperimentManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/manager/ExperimentManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/manager/RunManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/manager/RunManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/manager/RunResultManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/manager/RunResultManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/SaveCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/SaveCommand.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/service/LabService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/service/LabService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/storage/FileStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/storage/FileStorage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,17 +30,15 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="lab_Kotlin" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="lab_Kotlin" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="lab-kotlin" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -59,6 +46,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,20 +69,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.lab_Kotlin [app:run --args=\"--ui\"].executor": "Run",
     "Gradle.lab_Kotlin [app:run].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "feature/storage",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Java"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "profiler.jvm"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="lab_Kotlin [app:run]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+    <configuration name="lab_Kotlin [app:run --args=&quot;--ui&quot;]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -100,6 +97,7 @@
         <option name="taskNames">
           <list>
             <option value="app:run" />
+            <option value="--args=&quot;--ui&quot;" />
           </list>
         </option>
         <option name="vmOptions" />

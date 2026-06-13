@@ -12,13 +12,19 @@ class FileStorage {
     private val gson = GsonBuilder().setPrettyPrinting().serializeNulls().create()
 
     fun save(path: String, experiments: List<Experiment>, runs: List<Run>, results: List<RunResult>) {
+        val file = File(path)
+
         val dto = LabDataDto(
             experiments = experiments.map { ExperimentDto(it.id, it.name, it.description, it.ownerUsername, it.createdAt.toString(), it.updatedAt.toString()) },
             runs = runs.map { RunDto(it.id, it.experimentId, it.name, it.operatorName, it.createdAt.toString()) },
             results = results.map { RunResultDto(it.id, it.runId, it.param, it.value, it.unit, it.comment) }
         )
-        File(path).apply { parentFile?.mkdirs(); writeText(gson.toJson(dto), Charsets.UTF_8) }
+
+        file.apply { parentFile?.mkdirs()
+            writeText(gson.toJson(dto), Charsets.UTF_8)
+        }
     }
+
 
     fun load(path: String): LabDataDto {
         val file = File(path)

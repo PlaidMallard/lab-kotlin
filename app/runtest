@@ -9,6 +9,14 @@
       "updatedAt": "2026-05-23T11:24:54.678137100Z"
     }
   ],
-  "runs": [],
+  "runs": [
+    {
+      "id": 1,
+      "experimentId": 100,
+      "name": "плавление",
+      "operatorName": "random",
+      "createdAt": "2026-05-23T13:26:03.838859800Z"
+    }
+  ],
   "results": []
 }

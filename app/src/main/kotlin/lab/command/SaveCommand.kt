@@ -16,5 +16,6 @@ class SaveCommand : CliCommand {
             println("Ошибка: ${e.message}")
         }
         return true
+
     }
 }
