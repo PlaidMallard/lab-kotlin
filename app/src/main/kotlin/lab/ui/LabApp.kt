@@ -15,10 +15,12 @@ import lab.domain.Experiment
 import lab.domain.Run
 import lab.domain.RunResult
 import lab.service.LabService
+import lab.auth.AuthService
 
 class LabApp : Application() {
 
     private val service = LabService()
+    private val authService = AuthService()
 
     private val expData = FXCollections.observableArrayList<ExpRow>()
     private val runData = FXCollections.observableArrayList<RunRow>()
@@ -30,7 +32,15 @@ class LabApp : Application() {
     private val statusLabel = Label("Готово")
 
     override fun start(stage: Stage) {
-        stage.title = "Лабораторная система"
+        val loginDialog = LoginDialog(authService, stage)
+        val loggedIn = loginDialog.show()
+
+        if (!loggedIn) {
+            stage.close()
+            return
+        }
+
+        stage.title = "Лабораторная система — ${authService.getCurrentUsername()}"
 
         val root = BorderPane()
         root.top = makeToolbar(stage)
@@ -47,12 +57,12 @@ class LabApp : Application() {
 
     private fun makeToolbar(stage: Stage): ToolBar {
         val refreshBtn = Button("Refresh")
-        refreshBtn.setOnAction {
+        refreshBtn.setOnAction({  e ->
             loadExperiments()
             loadRuns()
             loadResults()
             setStatus("Обновлено")
-        }
+        })
 
         val saveBtn = Button("Сохранить")
         saveBtn.setOnAction {
@@ -123,7 +133,6 @@ class LabApp : Application() {
         colRuns.prefWidth = 70.0
 
         table.columns.addAll(colId, colName, colOwner, colRuns)
-
         table.selectionModel.selectedItemProperty().addListener { _, _, row ->
             selectedExpId = row?.rawId
             selectedRunId = null
@@ -139,8 +148,8 @@ class LabApp : Application() {
             val ok = showDialog("Новый эксперимент", "Название:" to nameF, "Описание:" to descF)
             if (ok) {
                 try {
-                    service.expCreate(nameF.text.trim(), descF.text.trim().ifBlank { null })
-                    loadExperiments()
+                    service.expCreate(nameF.text.trim(), descF.text.trim().ifBlank { null }, authService.getCurrentUsername())
+                    loadExperiments() // TODO: сделать загрузку только новых элементов
                     setStatus("Эксперимент создан")
                 } catch (e: Exception) {
                     showError("Ошибка", e.message)
@@ -151,6 +160,12 @@ class LabApp : Application() {
         val delBtn = Button("Удалить")
         delBtn.setOnAction {
             val row = table.selectionModel.selectedItem ?: return@setOnAction
+
+            if (row.getOwner() != authService.getCurrentUsername()) {
+                showError("Ошибка", "Вы можете удалять только свои эксперименты")
+                return@setOnAction
+            }
+
             val confirmed = showConfirm("Удалить '${row.getName()}'?\nВсе запуски и результаты тоже удалятся.")
             if (confirmed) {
                 try {
