@@ -27,13 +27,12 @@ class LabService {
 
     fun expUpdate(id: Long, name: String? = null, description: String? = null, ownerUsername: String? = null): Experiment =
         experimentManager.update(id, name, description, ownerUsername)
-
-    fun expDeleteCascade(id: Long): Boolean {
-        if (!experimentManager.contains(id)) return false
+    fun expDelete(id: Long) {
         runResultManager.removeByExperiment(id)
         runManager.removeByExperiment(id)
-        return experimentManager.remove(id)
+        experimentManager.remove(id)
     }
+
 
     fun runAdd(experimentId: Long, name: String, operatorName: String): Run =
         runManager.add(experimentId, name, operatorName)
@@ -79,5 +78,6 @@ class LabService {
         experimentManager = newExp
         runManager = newRun
         runResultManager = newRes
+
     }
 }
