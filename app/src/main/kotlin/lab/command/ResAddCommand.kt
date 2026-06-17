@@ -1,12 +1,18 @@
 package lab.command
 
+import lab.auth.AuthService
 import lab.service.LabService
 import java.util.Scanner
 
-class ResAddCommand : CliCommand {
+class ResAddCommand(private val authService: AuthService) : CliCommand {
     override val name: String = "res_add"
 
     override fun execute(args: List<String>, service: LabService, scanner: Scanner): Boolean {
+        if (!authService.isLoggedIn()) {
+            println("Error: please login first (command: login)")
+            return true
+        }
+
         if (args.isEmpty()) {
             println("Error: provide run ID. Example: res_add 3")
             return true

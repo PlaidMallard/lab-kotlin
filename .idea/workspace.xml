@@ -5,17 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="062ecd9c-d2e8-4aae-9134-e4fc2d33c906" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/ui/LabApp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/auth/AuthService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/auth/User.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/auth/UserStorage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/LoginCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/LogoutCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/RegisterCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/db/DbConfig.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/db/DbStorage.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/ui/LoginDialog.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/1" beforeDir="false" afterPath="$PROJECT_DIR$/app/1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/SaveCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/SaveCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/cli/CLI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/cli/CLI.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/ExpCreateCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/ExpCreateCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/ResAddCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/ResAddCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/RunAddCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/command/RunAddCommand.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/service/LabService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/service/LabService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/storage/FileStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/storage/FileStorage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/kotlin/lab/ui/LabApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/kotlin/lab/ui/LabApp.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +64,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "PlaidMallard"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/PlaidMallard/lab-kotlin.git",
+    "accountId": "2b71b501-e15a-454e-acd1-3ed63c402b73"
+  }
+}]]></component>
   <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\User\.gradle\wrapper\dists\gradle-9.4.0-bin\lcvyxq3t37f6mx9miaydrrgs\gradle-9.4.0" javaHome="C:\Users\User\.gradle\jdks\eclipse_adoptium-21-amd64-windows.2" gradleVersion="9.4.0" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -76,7 +95,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/storage",
+    "git-widget-placeholder": "#3 on feature/storage",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
@@ -87,6 +106,13 @@
   <component name="RunManager">
     <configuration name="lab_Kotlin [app:run --args=&quot;--ui&quot;]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="DB_PASSWORD" value="nbvvjatq" />
+            <entry key="DB_URL" value="jdbc:postgresql://localhost:5432/lab" />
+            <entry key="DB_USER" value="postgres" />
+          </map>
+        </option>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />

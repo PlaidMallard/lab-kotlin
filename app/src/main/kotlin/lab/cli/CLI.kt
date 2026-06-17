@@ -1,33 +1,24 @@
 package lab.cli
 
-import lab.command.CliCommand
-import lab.command.ExitCommand
-import lab.command.ExpCreateCommand
-import lab.command.ExpListCommand
-import lab.command.ExpShowCommand
-import lab.command.ExpSummaryCommand
-import lab.command.ExpUpdateCommand
-import lab.command.HelpCommand
-import lab.command.ResAddCommand
-import lab.command.ResListCommand
-import lab.command.RunAddCommand
-import lab.command.RunListCommand
-import lab.command.RunShowCommand
+import lab.auth.AuthService
+import lab.command.*
 import lab.service.LabService
 import java.util.Scanner
-import lab.command.SaveCommand
-import lab.command.LoadCommand
 
 class Cli(private val service: LabService) {
     private val scanner = Scanner(System.`in`)
+    private val authService = AuthService()
     private var running = true
 
     private val commands: List<CliCommand> = listOf(
         HelpCommand(),
         ExitCommand(),
-        ExpCreateCommand(),
-        RunAddCommand(),
-        ResAddCommand(),
+        RegisterCommand(authService),
+        LoginCommand(authService),
+        LogoutCommand(authService),
+        ExpCreateCommand(authService),
+        RunAddCommand(authService),
+        ResAddCommand(authService),
         ExpListCommand(),
         ExpShowCommand(),
         ExpUpdateCommand(),
@@ -43,9 +34,9 @@ class Cli(private val service: LabService) {
         println("Welcome to the experiment management system.")
         println("Type help for a list of commands.")
 
-
         while (running) {
-            print("> ")
+            val user = authService.getCurrentUsername()
+            print("[$user]> ")
             val line = scanner.nextLine().trim()
             if (line.isBlank()) continue
 
@@ -74,22 +65,15 @@ class Cli(private val service: LabService) {
     }
 
     private fun findCommand(name: String): CliCommand? {
-        for (command in commands) {
-            if (command.name == name) {
-                return command
-            }
-        }
-        return null
+        return commands.find { it.name == name }
     }
 
     private fun parseArguments(line: String): List<String> {
         val result = mutableListOf<String>()
         val current = StringBuilder()
         var inQuotes = false
-        var i = 0
 
-        while (i < line.length) {
-            val ch = line[i]
+        for (ch in line) {
             when {
                 ch == '"' -> inQuotes = !inQuotes
                 ch.isWhitespace() && !inQuotes -> {
@@ -100,12 +84,9 @@ class Cli(private val service: LabService) {
                 }
                 else -> current.append(ch)
             }
-            i++
         }
 
-        if (current.isNotEmpty()) {
-            result.add(current.toString())
-        }
+        if (current.isNotEmpty()) result.add(current.toString())
         return result
     }
 }
